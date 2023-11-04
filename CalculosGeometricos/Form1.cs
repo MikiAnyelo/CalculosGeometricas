@@ -1,3 +1,5 @@
+using System.Drawing;
+
 namespace CalculosGeometricos;
 
 public partial class Form1 : Form
@@ -20,7 +22,7 @@ public partial class Form1 : Form
 
     public void InicializarComponentes()
     {
-        this.Size = new Size(300, 310);//Tamaño de ventana
+        this.Size = new Size(300, 310);//Tamaï¿½o de ventana
         //Etiqueta Figura
 
         Label lblFigura = new Label();
@@ -143,14 +145,67 @@ public partial class Form1 : Form
                 case "Triangulo":
                     if (this.cmbCalculos.SelectedItem == "Perimetro")
                     {
+                        lblCampo1.Text = "Lado1";
+                        lblCampo1.Visible = true;
+                        txtCampo1.Visible = true;
+                        lblCampo2.Text = "Lado2";
+                        lblCampo2.Visible = true;
+                        txtCampo2.Visible = true;
+                        lblCampo3.Text = "Lado3";
+                        lblCampo3.Visible = true;
+                        txtCampo3.Visible = true;
+                    }
+                    else
+                    {
+                        lblCampo1.Text = "Altura";
+                        lblCampo1.Visible = true;
+                        txtCampo1.Visible = true;
+                        lblCampo2.Text = "Base";
+                        lblCampo2.Visible = true;
+                        txtCampo2.Visible = true;
+                    }
+                    break;
+                case "Rectangulo":
+                    if (this.cmbCalculos.SelectedItem == "Perimetro")
+                    {
+                        lblCampo1.Text = "Largo";
+                        lblCampo1.Visible = true;
+                        txtCampo1.Visible = true;
+                        lblCampo2.Text = "Ancho";
+                        lblCampo2.Visible = true;
+                        txtCampo2.Visible = true;
+                    }
+                    else
+                    {
+                        lblCampo1.Text = "Largo";
+                        lblCampo1.Visible = true;
+                        txtCampo1.Visible = true;
+                        lblCampo2.Text = "Ancho";
+                        lblCampo2.Visible = true;
+                        txtCampo2.Visible = true;
+                    }
+                    break;
+                case "Rombo":
+                    if (this.cmbCalculos.SelectedItem == "Perimetro")
+                    {
+                        lblCampo1.Text = "Lado1";
+                        lblCampo1.Visible = true;
+                        txtCampo1.Visible = true;
 
                     }
                     else
                     {
-
+                        lblCampo1.Text ="D Menor";
+                        lblCampo1.Visible = true;
+                        txtCampo1.Visible = true;
+                        lblCampo2.Text = "D Mayor";
+                        lblCampo2.Visible = true;
+                        txtCampo2.Visible = true;
+                        
+                    
                     }
+                break;
 
-                        break;
             }
         }
     }
@@ -178,14 +233,51 @@ public partial class Form1 : Form
                 case "Triangulo":
                     if (this.cmbCalculos.SelectedItem == "Perimetro")
                     {
-
+                        double lado = double.Parse(txtCampo1.Text);
+                        double lado1 = double.Parse(txtCampo2.Text);
+                        double lado2 = double.Parse(txtCampo3.Text);
+                        double Resultado = lado + lado1 + lado2;
+                        txtResultado.Text = Resultado.ToString();
                     }
                     else
                     {
-
+                        double ba = double.Parse(txtCampo1.Text);
+                        double altura = double.Parse(txtCampo2.Text);
+                        double Resultado = ba * altura / 2;
+                        txtResultado.Text = Resultado.ToString();
                     }
-
                     break;
+                case "Rectangulo":
+                    if (this.cmbCalculos.SelectedItem == "Perimetro")
+                    {
+                        double lado1 = double.Parse(txtCampo1.Text);
+                        double lado2 = double.Parse(txtCampo2.Text);
+                        double Resultado = 2 * lado1 + 2 * lado2;
+                        txtResultado.Text = Resultado.ToString();
+                    }
+                    else
+                    {
+                        double lado1 = double.Parse(txtCampo1.Text);
+                        double lado2 = double.Parse(txtCampo2.Text);
+                        double Resultado = lado1 * lado2;
+                        txtResultado.Text = Resultado.ToString();
+                    }
+                    break;
+                case "Rombo":
+                    if (this.cmbCalculos.SelectedItem == "Perimetro")
+                    {
+                        double lado1 = double.Parse(txtCampo1.Text);
+                        double Resultado = lado1*4;
+                        txtResultado.Text = Resultado.ToString();
+                    }
+                    else
+                    {
+                        double DiametroM = double.Parse(txtCampo1.Text);
+                        double DimaetroMe = double.Parse(txtCampo2.Text);
+                        double Resultado = DiametroM*DimaetroMe/2;
+                        txtResultado.Text = Resultado.ToString();
+                    }
+                    break;                    
 
             }
         }
